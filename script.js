@@ -14,7 +14,8 @@ jokeBtn.addEventListener('click', function() {
       return response.json();
     })
     .then(function(jokeData) {
-      // Log the full joke response to the console
-      console.log(jokeData);
+      // Display the joke setup and punchline on the page
+      setup.textContent = jokeData.setup;
+      punchline.textContent = jokeData.punchline;
     });
 });
