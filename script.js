@@ -7,15 +7,17 @@ const punchline = document.getElementById('punchline');
 jokeBtn.addEventListener('click', function() {
   console.log('Getting a joke...');
   
-  // Fetch a random joke from the Official Joke API
-  fetch('https://official-joke-api.appspot.com/random_joke')
+  // Fetch a random programming joke from the Official Joke API
+  fetch('https://official-joke-api.appspot.com/jokes/programming/random')
     .then(function(response) {
       // Convert the response to JSON format
       return response.json();
     })
     .then(function(jokeData) {
+      // The programming endpoint returns an array, so get the first joke
+      const joke = jokeData[0];
       // Display the joke setup and punchline on the page
-      setup.textContent = jokeData.setup;
-      punchline.textContent = jokeData.punchline;
+      setup.textContent = joke.setup;
+      punchline.textContent = joke.punchline;
     });
 });
